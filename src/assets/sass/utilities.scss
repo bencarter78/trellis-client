@@ -1,0 +1,130 @@
+.has-margin{
+  margin: $base-spacing;
+  &-small {
+    margin: $base-spacing / 2;
+  }
+  &-md {
+    margin: $base-spacing * 3;
+  }
+  &-lg {
+    margin: $base-spacing * 5;
+  }
+
+  &-top {
+    margin-top: $base-spacing;
+    &-small {
+      margin-top: $base-spacing / 2;
+    }
+    &-md {
+      margin-top: $base-spacing * 3;
+    }
+    &-lg {
+      margin-top: $base-spacing * 5;
+    }
+  }
+
+  &-right {
+    margin-right: $base-spacing;
+    &-small {
+      margin-right: $base-spacing / 2;
+    }
+    &-md {
+      margin-right: $base-spacing * 3;
+    }
+    &-lg {
+      margin-right: $base-spacing * 5;
+    }
+  }
+
+  &-bottom {
+    margin-bottom: $base-spacing;
+    &-small {
+      margin-bottom: $base-spacing / 2;
+    }
+    &-md {
+      margin-bottom: $base-spacing * 3;
+    }
+    &-lg {
+      margin-bottom: $base-spacing * 5;
+    }
+  }
+
+  &-left {
+    margin-left: $base-spacing;
+    &-small {
+      margin-left: $base-spacing / 2;
+    }
+    &-md {
+      margin-left: $base-spacing * 3;
+    }
+    &-lg {
+      margin-left: $base-spacing * 5;
+    }
+  }
+}
+
+// PADDING
+.has-padding{
+  padding: $base-spacing;
+  &-small {
+    padding: $base-spacing / 2;
+  }
+  &-md {
+    padding: $base-spacing * 3;
+  }
+  &-lg {
+    padding: $base-spacing * 5;
+  }
+
+  &-top {
+    padding-top: $base-spacing;
+    &-small {
+      padding-top: $base-spacing / 2;
+    }
+    &-md {
+      padding-top: $base-spacing * 3;
+    }
+    &-lg {
+      padding-top: $base-spacing * 5;
+    }
+  }
+
+  &-right {
+    padding-right: $base-spacing;
+    &-small {
+      padding-right: $base-spacing / 2;
+    }
+    &-md {
+      padding-right: $base-spacing * 3;
+    }
+    &-lg {
+      padding-right: $base-spacing * 5;
+    }
+  }
+
+  &-bottom {
+    padding-bottom: $base-spacing;
+    &-small {
+      padding-bottom: $base-spacing / 2;
+    }
+    &-md {
+      padding-bottom: $base-spacing * 3;
+    }
+    &-lg {
+      padding-bottom: $base-spacing * 5;
+    }
+  }
+
+  &-left {
+    padding-left: $base-spacing;
+    &-small {
+      padding-left: $base-spacing / 2;
+    }
+    &-md {
+      padding-left: $base-spacing * 3;
+    }
+    &-lg {
+      padding-left: $base-spacing * 5;
+    }
+  }
+}
