@@ -6,8 +6,15 @@
   export default {
     data () {
       return {
-        //
+        items: ''
       }
+    },
+
+    created () {
+      window.axios({
+        method: 'get',
+        url: 'projects'
+      })
     }
   }
 </script>

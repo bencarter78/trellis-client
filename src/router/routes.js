@@ -1,9 +1,15 @@
 export default [
   {
     path: '/',
+    name: 'home',
+    component: require('../views/Dashboard.vue')
+  },
+  {
+    path: '/dashboard',
     name: 'dashboard',
     component: require('../views/Dashboard.vue')
-  }, {
+  },
+  {
     path: '/login',
     name: 'login',
     component: require('../views/auth/Login.vue')

@@ -9,7 +9,8 @@
       <div class="field is-grouped">
         <p class="control">
           <button
-            class="button is-primary">
+            class="button is-primary"
+            v-bind:class="isLoading ? 'is-loading' : ''">
             Sign In
           </button>
         </p>
@@ -39,7 +40,11 @@
             email: document.getElementById('email').value,
             password: document.getElementById('password').value
           })
-          .then(res => console.log(res))
+          .then((res) => {
+            console.log(res)
+            localStorage._token = res.data.data.token
+            this.$router.push('/dashboard')
+          })
           .catch(err => console.log(err))
       }
     }
