@@ -1,5 +1,5 @@
 const axios = require('axios')
-const config = require('./../config/dev.env')
+const config = require('./../../config/dev.env')
 
 export default class {
   constructor () {
@@ -11,5 +11,9 @@ export default class {
         'Authorization': 'Bearer ' + localStorage._token
       }
     })
+  }
+
+  request (options) {
+    return this.client.request(options)
   }
 }

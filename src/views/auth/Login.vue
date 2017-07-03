@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  const config = require('./../../../config/dev.env')
+  import Client from './../../http/client'
 
   export default {
     data () {
@@ -35,10 +35,15 @@
     methods: {
       login (e) {
         this.isLoading = true
-        window.axios
-          .post(config.TRELLIS_SERVER_URL + '/login', {
-            email: document.getElementById('email').value,
-            password: document.getElementById('password').value
+        let client = new Client()
+        client
+          .request({
+            method: 'post',
+            url: 'login',
+            data: {
+              email: document.getElementById('email').value,
+              password: document.getElementById('password').value
+            }
           })
           .then((res) => {
             console.log(res)

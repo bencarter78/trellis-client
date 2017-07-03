@@ -3,6 +3,8 @@
 </template>
 
 <script>
+  import Client from './../http/client'
+
   export default {
     data () {
       return {
@@ -11,8 +13,8 @@
     },
 
     created () {
-      console.log(window.axios)
-      window.axios({
+      let client = new Client()
+      client.request({
         method: 'get',
         url: '/projects'
       })
