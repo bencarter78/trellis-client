@@ -11,9 +11,10 @@
     },
 
     created () {
+      console.log(window.axios)
       window.axios({
         method: 'get',
-        url: 'projects'
+        url: '/projects'
       })
     }
   }
