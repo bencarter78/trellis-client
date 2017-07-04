@@ -15,7 +15,7 @@ export default [
     component: require('../views/auth/Login.vue')
   },
   {
-    path: '/',
+    path: '/projects',
     name: 'projects.index',
     component: require('../views/projects/Index.vue')
   },

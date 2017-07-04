@@ -6,19 +6,6 @@
       </a>
     </div>
 
-    <div class="nav-center">
-      <a class="nav-item">
-        <span class="icon">
-          <i class="fa fa-github"></i>
-        </span>
-      </a>
-      <a class="nav-item">
-        <span class="icon">
-          <i class="fa fa-twitter"></i>
-        </span>
-      </a>
-    </div>
-
     <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
     <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
     <span class="nav-toggle">
@@ -30,9 +17,8 @@
     <!-- This "nav-menu" is hidden on mobile -->
     <!-- Add the modifier "is-active" to display it on mobile -->
     <div class="nav-right nav-menu">
-      <a class="nav-item">Dashboard</a>
-      <a class="nav-item">Projects</a>
-      <a class="nav-item">Blog</a>
+      <router-link :to="{name: 'dashboard'}" class="nav-item">Dashboard</router-link>
+      <router-link :to="{name: 'projects.index'}" class="nav-item">Projects</router-link>
 
       <div class="nav-item">
         <p class="control">

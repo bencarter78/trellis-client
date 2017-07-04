@@ -1,5 +1,13 @@
 <template>
-  <h1>Dashboard</h1>
+  <div>
+    <h1 class="title is-3">Dashboard</h1>
+    <div class="columns is-multiline">
+      <div class="column is-3" v-for="item in items">
+        <h4 class="title is-4">{{ item.name }}</h4>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -8,16 +16,29 @@
   export default {
     data () {
       return {
-        items: ''
+        items: []
       }
     },
 
     created () {
-      let client = new Client()
-      client.request({
-        method: 'get',
-        url: '/projects'
-      })
+      this.fetchProjects()
+    },
+
+    methods: {
+      fetchProjects () {
+        new Client()
+          .request({
+            method: 'get',
+            url: '/projects'
+          })
+          .then(res => {
+            console.log(res)
+            res.data.data.projects.forEach(item => this.items.push(item))
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      }
     }
   }
 </script>

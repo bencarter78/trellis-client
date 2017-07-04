@@ -2,7 +2,7 @@
   <div id="app">
     <div class="container">
       <header class="has-margin-bottom-md">
-        <nav-main></nav-main>
+        <trellis-nav-main></trellis-nav-main>
       </header>
       <router-view></router-view>
     </div>

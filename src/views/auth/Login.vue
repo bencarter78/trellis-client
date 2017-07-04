@@ -1,10 +1,11 @@
 <template>
-  <div class="column is-half is-offset-one-quarter">
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
     <h1 class="title is-3">Sign In</h1>
 
     <form @submit.prevent="login">
-      <text-field name="email" ref="email" label="Email" classes="has-margin-bottom-md"></text-field>
-      <text-field name="password" type="password" ref="password" label="Password" classes="has-margin-bottom-md"></text-field>
+      <trellis-text-field name="email" ref="email" label="Email" classes="has-margin-bottom-md"></trellis-text-field>
+      <trellis-text-field name="password" type="password" ref="password" label="Password" classes="has-margin-bottom-md"></trellis-text-field>
 
       <div class="field is-grouped">
         <p class="control">
@@ -19,6 +20,7 @@
         </p>
       </div>
     </form>
+  </div>
   </div>
 </template>
 
