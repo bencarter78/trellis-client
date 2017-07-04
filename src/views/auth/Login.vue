@@ -30,15 +30,15 @@
   export default {
     data () {
       return {
-        isLoading: false
+        isLoading: false,
+        client: new Client()
       }
     },
 
     methods: {
       login (e) {
         this.isLoading = true
-        let client = new Client()
-        client
+        this.client
           .request({
             method: 'post',
             url: 'login',
@@ -48,7 +48,6 @@
             }
           })
           .then((res) => {
-            console.log(res)
             localStorage._token = res.data.data.token
             this.$router.push('/dashboard')
           })

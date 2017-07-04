@@ -5,14 +5,22 @@ export default [
     component: require('../views/Dashboard.vue')
   },
   {
-    path: '/dashboard',
-    name: 'dashboard',
-    component: require('../views/Dashboard.vue')
-  },
-  {
     path: '/login',
     name: 'login',
     component: require('../views/auth/Login.vue')
+  },
+  {
+    path: '/logout',
+    name: 'logout',
+    beforeEnter: (to, from, next) => {
+      localStorage.removeItem('_token')
+      next('/login')
+    }
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: require('../views/Dashboard.vue')
   },
   {
     path: '/projects',
