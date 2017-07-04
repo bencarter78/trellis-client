@@ -21,6 +21,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "font-awesome": "^4.7.0",
+    "jwt-decode": "^2.2.0",
     "moment": "^2.18.1",
     "node-sass": "^4.5.3",
     "pikaday": "^1.6.1",
