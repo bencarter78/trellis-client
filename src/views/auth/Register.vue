@@ -87,7 +87,6 @@
             }
           })
           .then((res) => {
-            console.log(res)
             this.isLoading = false
             localStorage._token = res.data.data.token
             this.$router.push('/dashboard')

@@ -32,7 +32,6 @@
             url: '/projects'
           })
           .then(res => {
-            console.log(res)
             res.data.data.projects.forEach(item => this.items.push(item))
           })
           .catch(err => {
