@@ -30,15 +30,14 @@
   export default {
     data () {
       return {
-        isLoading: false,
-        client: new Client()
+        isLoading: false
       }
     },
 
     methods: {
       login (e) {
         this.isLoading = true
-        this.client
+        new Client()
           .request({
             method: 'post',
             url: 'login',

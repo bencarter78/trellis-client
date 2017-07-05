@@ -24,14 +24,16 @@
 </template>
 
 <script>
-  const config = require('./../../../config/dev.env')
-  const axios = require('axios')
+  import Client from './../../http/client'
 
   export default {
     methods: {
       submit () {
-        axios
-          .get(config.TRELLIS_SERVER_URL)
+        new Client()
+          .request({
+            method: 'get',
+            url: '/projects/store'
+          })
       }
     }
   }

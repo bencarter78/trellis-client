@@ -27,7 +27,7 @@
       <div class="nav-item">
         <p class="control">
           <span class="button">
-            <router-link :to="{path: '/login'}" v-if="!loggedIn">
+            <router-link :to="{name: 'login'}" v-if="!loggedIn">
               <span>Sign In</span>
             </router-link>
 
@@ -40,9 +40,9 @@
 
       <div class="nav-item" v-if="!loggedIn">
         <p class="control">
-          <a class="button is-primary">
+          <router-link :to="{name: 'register'}" class="button is-primary">
             <span>Sign Up</span>
-          </a>
+          </router-link>
         </p>
       </div>
     </div>
