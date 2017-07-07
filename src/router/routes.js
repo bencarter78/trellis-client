@@ -1,5 +1,6 @@
 import Auth from './auth'
 import Projects from './projects'
+import Setup from './setup'
 
 export default [
   {
@@ -13,5 +14,6 @@ export default [
     component: require('../views/Dashboard.vue')
   },
   ...Auth,
-  ...Projects
+  ...Projects,
+  ...Setup
 ]

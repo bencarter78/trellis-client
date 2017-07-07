@@ -1,26 +1,26 @@
 <template>
   <div class="columns">
     <div class="column is-half is-offset-one-quarter">
-    <h1 class="title is-3">Sign In</h1>
+      <h1 class="title is-3">Sign In</h1>
 
-    <form @submit.prevent="login">
-      <trellis-text-field name="email" ref="email" label="Email" classes="has-margin-bottom-md"></trellis-text-field>
-      <trellis-text-field name="password" type="password" ref="password" label="Password" classes="has-margin-bottom-md"></trellis-text-field>
+      <form @submit.prevent="login">
+        <trellis-text-field name="email" ref="email" label="Email" classes="has-margin-bottom-md"></trellis-text-field>
+        <trellis-text-field name="password" type="password" ref="password" label="Password" classes="has-margin-bottom-md"></trellis-text-field>
 
-      <div class="field is-grouped">
-        <p class="control">
-          <button
-            class="button is-primary"
-            v-bind:class="isLoading ? 'is-loading' : ''">
-            Sign In
-          </button>
-        </p>
-        <p class="control">
-          <button class="button is-link">Forgot Password</button>
-        </p>
-      </div>
-    </form>
-  </div>
+        <div class="field is-grouped">
+          <p class="control">
+            <button
+              class="button is-primary"
+              v-bind:class="isLoading ? 'is-loading' : ''">
+              Sign In
+            </button>
+          </p>
+          <p class="control">
+            <button class="button is-link">Forgot Password</button>
+          </p>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
