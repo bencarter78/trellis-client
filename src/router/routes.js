@@ -1,6 +1,7 @@
 import Auth from './auth'
 import Projects from './projects'
 import Setup from './setup'
+import Teams from './teams'
 
 export default [
   {
@@ -15,5 +16,6 @@ export default [
   },
   ...Auth,
   ...Projects,
-  ...Setup
+  ...Setup,
+  ...Teams
 ]
