@@ -1,21 +1,21 @@
 export default [
   {
-    path: '/projects',
+    path: '/teams/:id/projects',
     name: 'projects.index',
     component: require('../views/projects/Index.vue')
   },
   {
-    path: '/projects/create',
+    path: '/teams/:id/projects/create',
     name: 'projects.create',
     component: require('../views/projects/Create.vue')
   },
   {
-    path: '/projects/:id',
+    path: '/teams/:id/projects/:pid',
     name: 'projects.show',
     component: require('../views/projects/Show.vue')
   },
   {
-    path: '/projects/:id/edit',
+    path: '/teams/:id/projects/:pid/edit',
     name: 'projects.edit',
     component: require('../views/projects/Edit.vue')
   }
