@@ -1,6 +1,6 @@
 <template>
   <aside class="menu">
-    <p class="menu-label">{{ team }}</p>
+    <p class="menu-label">{{ project }}</p>
     <ul class="menu-list">
       <li><a class='is-active'>Projects</a></li>
       <li><a>Settings</a></li>
@@ -17,6 +17,6 @@
 
 <script>
     export default {
-      props: ['active', 'team']
+      props: ['active', 'project']
     }
 </script>

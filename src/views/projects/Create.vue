@@ -46,7 +46,7 @@
             })
             .then(res => {
               this.$router.push({
-                name: 'projects.show',
+                name: 'teams.projects.show',
                 params: {id: res.data.data.project.uid}
               })
             })

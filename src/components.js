@@ -14,4 +14,5 @@ Vue.component('trellis-card-projects', require('./components/cards/Projects.vue'
 
 // Nav
 Vue.component('trellis-nav-main', require('./components/nav/Main.vue'))
+Vue.component('trellis-nav-project', require('./components/nav/Project.vue'))
 Vue.component('trellis-nav-team', require('./components/nav/Team.vue'))

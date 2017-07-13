@@ -1,10 +1,24 @@
 <template>
   <div class="columns">
     <div class="column is-3">
-      <trellis-nav-team></trellis-nav-team>
+      <trellis-nav-team :team="item.name" v-if="item"></trellis-nav-team>
     </div>
     <div class="column is-9">
-      <h1 class="title is-3">Team Overview</h1>
+      <div v-if="item">
+        <h1 class="title is-3">{{ item.name }} Projects</h1>
+        <div v-if="item.projects">
+          <trellis-card-projects :items="item.projects"></trellis-card-projects>
+        </div>
+        <div v-else>
+            <p>
+              Looks like you have no projects for this team yet.
+            </p>
+
+            <router-link :to="{name: 'projects.create'}" class="button is-primary has-margin-top">
+              Create Project
+            </router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -15,7 +29,8 @@
   export default {
     data () {
       return {
-        active: 'settings'
+        active: 'settings',
+        item: ''
       }
     },
 
@@ -31,9 +46,9 @@
             url: '/teams/' + this.$route.params.id
           })
           .then(res => {
-            console.log(res)
+            this.item = res.data.data.team
           })
-          .err(err => {
+          .catch(err => {
             console.log(err)
           })
       }
