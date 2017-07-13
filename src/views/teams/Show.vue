@@ -14,7 +14,9 @@
               Looks like you have no projects for this team yet.
             </p>
 
-            <router-link :to="{name: 'projects.create'}" class="button is-primary has-margin-top">
+            <router-link
+              :to="{name: 'teams.projects.create', params: {id: $route.params.id}}"
+              class="button is-primary has-margin-top">
               Create Project
             </router-link>
         </div>
