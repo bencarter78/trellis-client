@@ -12,6 +12,9 @@ Vue.component('trellis-text-field', require('./components/forms/TextField.vue'))
 Vue.component('trellis-card', require('./components/cards/Card.vue'))
 Vue.component('trellis-card-projects', require('./components/cards/Projects.vue'))
 
+// Modal
+Vue.component('trellis-modal', require('./components/modals/Base.vue'))
+
 // Nav
 Vue.component('trellis-nav-main', require('./components/nav/Main.vue'))
 Vue.component('trellis-nav-project', require('./components/nav/Project.vue'))
