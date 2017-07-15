@@ -16,16 +16,17 @@
           </div>
 
           <div class="modal-footer">
-            <ul class="list-inline">
-              <li>
-                <slot name="footer-actions"></slot>
-              </li>
-              <li>
-                <button class="btn btn-default" @click="$emit('close')">
+            <div class="field is-grouped">
+              <p class="control">
+                <slot name="footer"></slot>
+              </p>
+
+              <p class="control">
+                <button class="button is-outlined" @click="$emit('close')">
                   CANCEL
                 </button>
-              </li>
-            </ul>
+              </p>
+            </div>
           </div>
         </div>
       </div>
