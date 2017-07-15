@@ -31,8 +31,8 @@
       submit () {
         new Client()
           .request({
-            method: 'get',
-            url: '/projects/store'
+            method: 'post',
+            url: '/projects'
           })
       }
     }
