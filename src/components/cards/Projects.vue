@@ -11,9 +11,11 @@
         <div slot="footer">
           <div class="card-footer-item is-pulled-right">
             <router-link
-              :to="{ name: 'projects.edit', params: {id: item.id} }"
+              :to="{
+                name: 'teams.projects.show',
+                params: {id: item.team.uid, pid: item.uid}}"
               class="button is-primary">
-              Edit
+              View
             </router-link>
           </div>
         </div>
