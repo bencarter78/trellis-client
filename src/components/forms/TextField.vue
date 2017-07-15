@@ -1,6 +1,6 @@
 <template>
-  <div class="has-margin-bottom-3x">
-    <div class="form-group" v-bind:class="{'has-error': error}">
+  <div class="has-margin-bottom">
+    <div class="field" v-bind:class="{'has-error': error}">
       <label class="label" v-bind:for="name" v-if="label">
         {{ label }}
       </label>
@@ -15,7 +15,7 @@
           v-bind:value="value">
       </p>
     </div>
-    <span class="text-danger has-margin-top-1x" v-if="error">* Required field</span>
+    <span class="text-danger has-margin-top" v-if="error">* Required field</span>
   </div>
 </template>
 
