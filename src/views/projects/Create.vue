@@ -47,7 +47,10 @@
             .then(res => {
               this.$router.push({
                 name: 'teams.projects.show',
-                params: {id: res.data.data.project.uid}
+                params: {
+                  id: this.$route.params.id,
+                  pid: res.data.data.project.uid
+                }
               })
             })
             .catch(err => {
