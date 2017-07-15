@@ -16,3 +16,17 @@ Vue.component('trellis-card-projects', require('./components/cards/Projects.vue'
 Vue.component('trellis-nav-main', require('./components/nav/Main.vue'))
 Vue.component('trellis-nav-project', require('./components/nav/Project.vue'))
 Vue.component('trellis-nav-team', require('./components/nav/Team.vue'))
+
+// Projects
+Vue.component('trellis-project-header', require('./components/projects/Header.vue'))
+Vue.component('trellis-project-issues', require('./components/projects/Issues.vue'))
+Vue.component('trellis-project-lessons', require('./components/projects/Lessons.vue'))
+Vue.component('trellis-project-milestones', require('./components/projects/Milestones.vue'))
+Vue.component('trellis-project-objectives', require('./components/projects/Objectives.vue'))
+Vue.component('trellis-project-overview', require('./components/projects/Overview.vue'))
+Vue.component('trellis-project-risks', require('./components/projects/Risks.vue'))
+Vue.component('trellis-project-status', require('./components/projects/Status.vue'))
+Vue.component('trellis-project-streams', require('./components/projects/Streams.vue'))
+Vue.component('trellis-project-tasks', require('./components/projects/Tasks.vue'))
+Vue.component('trellis-project-team', require('./components/projects/Team.vue'))
+Vue.component('trellis-project-settings', require('./components/projects/Settings.vue'))
