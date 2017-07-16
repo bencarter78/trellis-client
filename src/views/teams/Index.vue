@@ -1,6 +1,21 @@
 <template>
   <div>
-    <h1 class="title is-3">Your Teams</h1>
+    <trellis-header>
+      <span slot="title">
+        <strong>Your Teams</strong>
+      </span>
+
+      <span slot="nav-right">
+        <div class="level-right">
+          <p class="level-item">
+            <router-link class="button is-primary" :to="{name: 'teams.create'}">
+              Add
+            </router-link>
+          </p>
+        </div>
+      </span>
+    </trellis-header>
+
     <div class="columns is-multiline">
       <div class="column is-3" v-for="item in items">
         <trellis-card>
@@ -8,7 +23,10 @@
           <div slot="footer">
             <div class="card-footer-item is-pulled-right">
               <router-link
-                :to="{ name: 'teams.show', params: {id: item.uid} }"
+                :to="{
+                  name: 'teams.show',
+                  params: {tid: item.uid}
+                }"
                 class="button is-primary">
                 View
               </router-link>
@@ -42,7 +60,7 @@
             url: '/teams'
           })
           .then(res => {
-            res.data.data.teams.forEach(item => this.items.push(item))
+            this.items = res.data.data.teams
           })
           .catch(err => {
             console.log(err)

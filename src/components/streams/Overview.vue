@@ -2,21 +2,10 @@
   <div class="columns">
     <div class="column is-6">
       <trellis-card>
-        <div slot="title">Objectives</div>
+        <div slot="title">Streams</div>
 
         <div slot="content">
-          <table class="table">
-            <tbody>
-              <tr v-for="o in item.objectives">
-                <td>{{ o.name }}</td>
-                <td>
-                  <span class="icon">
-                    <i class="fa fa-check-square-o"></i>
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam error porro libero totam harum eum sequi aliquam molestiae illum provident laboriosam perspiciatis maxime minus ullam, sint quasi, voluptatem natus adipisci.
         </div>
       </trellis-card>
     </div>
@@ -27,18 +16,20 @@
 
         <div slot="content">
           <table class="table">
+            <thead>
+              <tr>
+                <th>Task</th>
+                <th>Due</th>
+              </tr>
+            </thead>
             <tbody>
               <tr>
                 <td>Some Task</td>
-                <td>in 2 days</td>
+                <td>2 days</td>
               </tr>
               <tr>
                 <td>Some Other Task</td>
                 <td>20/10/17</td>
-              </tr>
-              <tr>
-                <td>Some Mega Task</td>
-                <td>24/10/17</td>
               </tr>
             </tbody>
           </table>
@@ -50,6 +41,6 @@
 
 <script>
   export default {
-    props: ['item']
+    //
   }
 </script>

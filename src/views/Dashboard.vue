@@ -4,7 +4,6 @@
     <div class="columns is-multiline">
       <div class="column is-3" v-for="item in items">
         <h4 class="title is-4">{{ item.name }}</h4>
-        <p>{{ item.description }}</p>
       </div>
     </div>
   </div>

@@ -1,6 +1,11 @@
 <template>
   <div>
-    <h1 class="title is-3">Your Projects</h1>
+    <trellis-header>
+      <span slot="title">
+        <strong>Your Projects</strong>
+      </span>
+    </trellis-header>
+
     <trellis-card-projects :items="items"></trellis-card-projects>
   </div>
 </template>
@@ -27,7 +32,7 @@
             url: '/projects'
           })
           .then(res => {
-            res.data.data.projects.forEach(item => this.items.push(item))
+            this.items = res.data.data.projects
           })
           .catch(err => {
             console.log(err)

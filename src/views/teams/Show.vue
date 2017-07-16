@@ -3,19 +3,42 @@
     <div class="column is-3">
       <trellis-nav-team :team="item.name" v-if="item"></trellis-nav-team>
     </div>
+
     <div class="column is-9">
       <div v-if="item">
-        <h1 class="title is-3">{{ item.name }} Projects</h1>
+        <trellis-header>
+          <span slot="title">
+            <strong>{{ item.name }}</strong> Projects
+          </span>
+
+          <span slot="nav-right">
+            <div class="level-right">
+              <p class="level-item">
+                <router-link class="button is-primary" :to="{
+                  name: 'teams.projects.create',
+                  params: {tid: this.$route.params.tid}
+                }">
+                  Add
+                </router-link>
+              </p>
+            </div>
+          </span>
+        </trellis-header>
+
         <div v-if="item.projects">
-          <trellis-card-projects :items="item.projects"></trellis-card-projects>
+          <trellis-card-projects :items="item.projects" :tid="item.uid"></trellis-card-projects>
         </div>
+
         <div v-else>
             <p>
               Looks like you have no projects for this team yet.
             </p>
 
             <router-link
-              :to="{name: 'teams.projects.create', params: {id: $route.params.id}}"
+              :to="{
+                name: 'teams.projects.create',
+                params: {tid: $route.params.tid}
+              }"
               class="button is-primary has-margin-top">
               Create Project
             </router-link>
@@ -37,15 +60,15 @@
     },
 
     created () {
-      this.fetch()
+      this.fetchData()
     },
 
     methods: {
-      fetch () {
+      fetchData () {
         new Client()
           .request({
             method: 'get',
-            url: '/teams/' + this.$route.params.id
+            url: '/teams/' + this.$route.params.tid
           })
           .then(res => {
             this.item = res.data.data.team

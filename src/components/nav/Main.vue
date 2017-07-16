@@ -11,6 +11,9 @@
       <router-link :to="{name: 'projects.index'}" class="nav-item">
         Projects
       </router-link>
+      <router-link :to="{name: 'teams.index'}" class="nav-item">
+        Teams
+      </router-link>
       <router-link :to="{name: 'setup'}" class="nav-item">
         Set Up
       </router-link>

@@ -1,8 +1,10 @@
 <template>
-  <div class="has-margin-bottom-3x">
-    <div class="form-group"  v-bind:class="{'has-error': error}">
-      <label v-bind:for="fieldName">{{ label }}</label>
-      <input :name="fieldName" ref="pikaday" :value="value" class="form-control" />
+  <div class="has-margin-bottom">
+    <div class="field"  v-bind:class="{'has-error': error}">
+      <label class="label" v-bind:for="name">{{ label }}</label>
+      <p class="control">
+        <input :id="name" :name="name" ref="pikaday" :value="value" class="input" />
+      </p>
       <span class="text-danger has-margin-top-1x" v-if="error">* Required field</span>
     </div>
   </div>
@@ -12,7 +14,7 @@
   const moment = require('moment')
   export default {
     props: {
-      fieldName: {
+      name: {
         default: ''
       },
       label: {

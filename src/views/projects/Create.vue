@@ -12,6 +12,10 @@
           <trellis-text-area label="Description" name="description"></trellis-text-area>
         </div>
 
+        <div class="has-margin-bottom-md">
+          <trellis-datepicker label="Due Date" name="due_date"></trellis-datepicker>
+        </div>
+
         <div class="field is-grouped">
           <p class="control">
             <button class="button is-primary">Submit</button>
@@ -28,20 +32,24 @@
 <script>
   import Client from './../../http/client'
 
+  const moment = require('moment')
+
   export default {
     methods: {
       submit (e) {
         let name = document.getElementById('name').value
         let description = document.getElementById('description').value
+        let dueDate = document.getElementById('due_date').value
 
         if (name.length > 0) {
           new Client()
             .request({
               method: 'post',
-              url: `/teams/${this.$route.params.id}/projects`,
+              url: `/teams/${this.$route.params.tid}/projects`,
               data: {
                 name: name,
-                description: description
+                description: description,
+                due_on: dueDate !== '' ? moment(dueDate, 'DD/MM/YYYY').format('YYYY-MM-DD') : ''
               }
             })
             .then(res => {

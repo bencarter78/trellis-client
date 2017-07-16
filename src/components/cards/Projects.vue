@@ -13,7 +13,11 @@
             <router-link
               :to="{
                 name: 'teams.projects.show',
-                params: {id: item.team.uid, pid: item.uid}}"
+                params: {
+                  tid: tid ? tid : item.team.uid,
+                  pid: item.uid
+                }
+              }"
               class="button is-primary">
               View
             </router-link>
@@ -26,6 +30,6 @@
 
 <script>
   export default {
-    props: ['items']
+    props: ['items', 'tid']
   }
 </script>

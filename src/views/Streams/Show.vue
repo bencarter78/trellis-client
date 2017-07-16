@@ -1,31 +1,26 @@
 <template>
   <div class="columns" v-if="item">
     <div class="column is-3">
-      <trellis-nav-project
-        @update-view="updateView"
-        :project="item.name">
-      </trellis-nav-project>
+      <trellis-nav-stream @update-view="updateView"></trellis-nav-stream>
     </div>
 
     <div class="column is-9">
       <trellis-header>
         <span slot="title">
-          <strong>{{ item.name }}</strong> Project
+          <span class="icon">
+            <i class="fa fa-code-fork"></i>
+          </span>
+          <strong>{{ item.name }}</strong> Stream
+          <small class="is-small">{{ item.project.name }}</small>
         </span>
 
         <span slot="nav-right">
           <div class="level-right">
             <p class="level-item">
               <span class="icon">
-                <i class="fa fa-user has-margin-right"></i>
-              </span>
-              {{ item.owner.name }}
-            </p>
-            <p class="level-item">
-              <span class="icon">
                 <i class="fa fa-calendar has-margin-right"></i>
               </span>
-              {{ getDueDate(item.due_on) }}
+              2/07/17
             </p>
             <p class="level-item">
               <span class="button is-primary is-outlined">
@@ -44,12 +39,10 @@
 <script>
   import Client from './../../http/client'
 
-  const moment = require('moment')
-
   export default {
     data () {
       return {
-        view: 'trellis-project-overview',
+        view: 'trellis-stream-overview',
         item: ''
       }
     },
@@ -63,10 +56,10 @@
         new Client()
           .request({
             method: 'get',
-            url: `/teams/${this.$route.params.id}/projects/${this.$route.params.pid}`
+            url: `/projects/${this.$route.params.pid}/streams/${this.$route.params.sid}`
           })
           .then(res => {
-            this.item = res.data.data.project
+            this.item = res.data.data.stream
           })
           .catch(err => {
             console.log(err)
@@ -74,11 +67,7 @@
       },
 
       updateView (view) {
-        this.view = `trellis-project-${view}`
-      },
-
-      getDueDate (due) {
-        return due ? moment(due).format('DD/MM/YYYY') : ''
+        this.view = `trellis-stream-${view}`
       }
     }
   }

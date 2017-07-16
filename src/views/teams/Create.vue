@@ -1,38 +1,63 @@
 <template>
-  <div>
-    <h1 class="title is-2 has-margin-bottom">Create A New Project</h1>
+  <div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+      <h1 class="title is-3">Create A Team</h1>
 
-    <form @submit.prevent="submit">
-      <div class="has-margin-bottom-md">
-        <text-field label="Project Name" name="name"></text-field>
-      </div>
+      <form @submit.prevent="submit">
+        <trellis-text-field
+          name="name"
+          ref="name"
+          label="Team Name"
+          classes="has-margin-bottom-md">
+        </trellis-text-field>
 
-      <div class="has-margin-bottom-md">
-        <text-field label="Description" name="description"></text-field>
-      </div>
-
-      <div class="field is-grouped">
-        <p class="control">
-          <button class="button is-primary">Submit</button>
-        </p>
-        <p class="control">
-          <button class="button is-link">Cancel</button>
-        </p>
-      </div>
-    </form>
+        <div class="field is-grouped">
+          <p class="control">
+            <button
+              class="button is-primary"
+              v-bind:class="isLoading ? 'is-loading' : ''">
+              Go
+            </button>
+          </p>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
-  import Client from './../../http/client'
+  import Client from '../../http/client'
 
   export default {
+    data () {
+      return {
+        isLoading: false
+      }
+    },
+
     methods: {
       submit () {
+        let name = document.getElementsByName('name')[0].value
+
+        if (name !== '') {
+          this.sendRequest(name)
+        }
+      },
+
+      sendRequest (name) {
         new Client()
           .request({
+            url: '/teams',
             method: 'post',
-            url: '/projects'
+            data: {
+              name: name
+            }
+          })
+          .then(res => {
+            this.$router.push({name: 'teams.show', params: {tid: res.data.data.team.uid}})
+          })
+          .catch(err => {
+            console.log(err)
           })
       }
     }

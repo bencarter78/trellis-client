@@ -10,12 +10,12 @@ export default [
     component: require('../views/teams/Create.vue')
   },
   {
-    path: '/teams/:id',
+    path: '/teams/:tid',
     name: 'teams.show',
     component: require('../views/teams/Show.vue')
   },
   {
-    path: '/teams/:id/edit',
+    path: '/teams/:tid/edit',
     name: 'teams.edit',
     component: require('../views/teams/Edit.vue')
   }

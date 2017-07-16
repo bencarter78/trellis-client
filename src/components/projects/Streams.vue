@@ -27,7 +27,18 @@
     </thead>
     <tbody>
       <tr v-for="stream in streams">
-        <td>{{ stream.name }}</td>
+        <td>
+          <router-link :to="{
+            name: 'teams.projects.streams.show',
+            params: {
+              tid: $route.params.tid,
+              pid: $route.params.pid,
+              sid: stream.uid
+            }
+          }">
+            {{ stream.name }}
+          </router-link>
+        </td>
         <td class="has-text-centered">
           <a @click="openDeleteModal(stream)">
             <span class="icon">
@@ -98,7 +109,7 @@ export default {
           }
         })
         .then(res => {
-          this.streams.push(res.data.data.objective)
+          this.streams.push(res.data.data.stream)
           this.showAddModal = false
         })
         .catch(err => {
