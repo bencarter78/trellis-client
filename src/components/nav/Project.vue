@@ -1,7 +1,5 @@
 <template>
   <aside class="menu">
-    <p class="menu-label">{{ project }}</p>
-
     <ul class="menu-list">
       <li v-for="item in items">
         <a v-bind:class="active === item.name ? 'is-active' : ''" @click="updateView(item.name)">
@@ -29,10 +27,10 @@
           {name: 'overview', icon: 'fa-tachometer'},
           {name: 'objectives', icon: 'fa-bullseye'},
           {name: 'streams', icon: 'fa-code-fork'},
+          {name: 'milestones', icon: 'fa-diamond'},
           {name: 'tasks', icon: 'fa-check-square-o'},
           {name: 'lessons', icon: 'fa-lightbulb-o'},
-          {name: 'milestones', icon: 'fa-diamond'},
-          {name: 'status', icon: 'fa-flag'},
+          // {name: 'status', icon: 'fa-flag'},
           {name: 'risks', icon: 'fa-warning'},
           {name: 'issues', icon: 'fa-fire'},
           {name: 'team', icon: 'fa-cog'},
