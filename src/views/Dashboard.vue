@@ -1,12 +1,31 @@
 <template>
   <div>
     <h1 class="title is-3">Dashboard</h1>
+
     <div class="columns is-multiline">
-      <div class="column is-3" v-for="item in items">
-        <h4 class="title is-4">{{ item.name }}</h4>
-        <p>{{ item.description }}</p>
+      <div class="column is-3" v-for="team in teams">
+        <trellis-card>
+          <div slot="title">{{ team.name }}</div>
+
+          <div slot="footer">
+            <div class="card-footer-item is-pulled-right">
+              <router-link
+                :to="{ name: 'teams.show', params: {id: team.uid} }"
+                class="button is-primary">
+                View
+              </router-link>
+            </div>
+          </div>
+        </trellis-card>
       </div>
     </div>
+
+    <!-- <div class="columns is-multiline">
+      <div class="column is-3" v-for="project in projects">
+        <h4 class="title is-4">{{ project.name }}</h4>
+        <p>{{ project.description }}</p>
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -16,23 +35,25 @@
   export default {
     data () {
       return {
-        items: []
+        teams: [],
+        projects: []
       }
     },
 
     created () {
-      this.fetchProjects()
+      this.fetch('teams')
+      this.fetch('projects')
     },
 
     methods: {
-      fetchProjects () {
+      fetch (resource) {
         new Client()
           .request({
             method: 'get',
-            url: '/projects'
+            url: `/${resource}`
           })
           .then(res => {
-            res.data.data.projects.forEach(item => this.items.push(item))
+            res.data.data[resource].forEach(item => this[resource].push(item))
           })
           .catch(err => {
             console.log(err)
