@@ -6,7 +6,7 @@
     <div class="column is-9">
       <div v-if="item">
         <h1 class="title is-3">{{ item.name }} Projects</h1>
-        <div v-if="item.projects">
+        <div v-if="item.projects.length > 0">
           <trellis-card-projects :items="item.projects"></trellis-card-projects>
         </div>
         <div v-else>
