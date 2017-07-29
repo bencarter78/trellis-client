@@ -32,7 +32,12 @@
           <td>{{ moment(o.due_on).format('DD/MM/YYYY') }}</td>
           <td class="has-text-centered">
             <a @click="openDeleteModal(o)">
-              <span class="icon">
+              <span class="icon is-small">
+                <i class="fa fa-pencil"></i>
+              </span>
+            </a>
+            <a @click="openDeleteModal(o)">
+              <span class="icon is-small">
                 <i class="fa fa-trash-o"></i>
               </span>
             </a>

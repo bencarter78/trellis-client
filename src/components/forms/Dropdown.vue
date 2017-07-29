@@ -1,10 +1,17 @@
 <template>
   <div class="has-margin-bottom-3x">
-    <div class="form-group" v-bind:class="{'has-error': error}">
-      <label v-bind:for="fieldName">{{ label }}</label>
-      <select :name="fieldName" class="form-control">
-        <option v-for="option in options" :value="option.value" v-bind:selected="isSelected(option.value)">{{ option.label }}</option>
-      </select>
+    <div class="field" v-bind:class="{'has-error': error}">
+      <label class="label" v-bind:for="name" v-if="label">
+        {{ label }}
+      </label>
+
+      <div class="control">
+        <div class="select">
+          <select :id="name" :name="name">
+            <option v-for="option in options" :value="option.value" v-bind:selected="isSelected(option.value)">{{ option.label }}</option>
+          </select>
+        </div>
+      </div>
     </div>
     <span class="text-danger has-margin-top-1x" v-if="error">* Required field</span>
   </div>
@@ -12,7 +19,8 @@
 
 <script>
   export default {
-    props: ['fieldName', 'label', 'value', 'options', 'error'],
+    props: ['name', 'label', 'value', 'options', 'error'],
+
     methods: {
       isSelected (value) {
         if (this.value === value) {

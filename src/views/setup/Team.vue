@@ -7,8 +7,7 @@
         <trellis-text-field
           name="name"
           ref="name"
-          label="Team Name"
-          classes="has-margin-bottom-md">
+          label="Team Name">
         </trellis-text-field>
 
         <div class="field is-grouped">

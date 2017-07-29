@@ -22,12 +22,14 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>Owner</th>
         <th class="has-text-centered">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="stream in streams">
         <td>{{ stream.name }}</td>
+        <td>{{ streamOwner(stream) }}</td>
         <td class="has-text-centered">
           <a @click="openDeleteModal(stream)">
             <span class="icon">
@@ -43,7 +45,21 @@
     <h3 slot="header" class="title is-4">Add Stream</h3>
 
     <div slot="body">
-      <trellis-text-field label="Name" name="name"></trellis-text-field>
+      <!-- <trellis-text-field label="Name" name="name"></trellis-text-field> -->
+      <trellis-autocomplete
+        :endpoint="'/teams/' + $route.params.id + '/streams/search'"
+        :format="formatAutocomplete"
+        values=""
+        label="Name"
+        name="name">
+      </trellis-autocomplete>
+
+      <trellis-dropdown
+        :options="getMembers()"
+        values=""
+        label="Stream Owner"
+        name="owner_id">
+      </trellis-dropdown>
     </div>
 
     <div slot="footer">
@@ -94,11 +110,12 @@ export default {
           url: this.endpoint,
           method: 'post',
           data: {
-            name: document.getElementById('name').value
+            name: document.getElementById('search').value,
+            owner_id: document.getElementById('owner_id').value
           }
         })
         .then(res => {
-          this.streams.push(res.data.data.objective)
+          this.streams.push(res.data.data.stream)
           this.showAddModal = false
         })
         .catch(err => {
@@ -124,6 +141,28 @@ export default {
         .catch(err => {
           console.log(err)
         })
+    },
+
+    formatAutocomplete (items) {
+      let data = []
+      items.forEach(item => {
+        data.push(item)
+      })
+      return data
+    },
+
+    getMembers () {
+      let data = []
+
+      this.item.members.forEach(member => {
+        data.push({label: member.name, value: member.username})
+      })
+
+      return data
+    },
+
+    streamOwner (stream) {
+      return stream.owners[stream.owners.length - 1].name
     }
   }
 }
