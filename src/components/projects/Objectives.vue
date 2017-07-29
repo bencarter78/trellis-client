@@ -22,12 +22,14 @@
       <thead>
         <tr>
           <th>Name</th>
+          <th>Due</th>
           <th class="has-text-centered">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="o in objectives">
           <td>{{ o.name }}</td>
+          <td>{{ moment(o.due_on).format('DD/MM/YYYY') }}</td>
           <td class="has-text-centered">
             <a @click="openDeleteModal(o)">
               <span class="icon">
@@ -44,6 +46,7 @@
 
       <div slot="body">
         <trellis-text-field label="Name" name="name"></trellis-text-field>
+        <trellis-datepicker label="Due Date" name="due_on"></trellis-datepicker>
       </div>
 
       <div slot="footer">
@@ -69,6 +72,7 @@
 
 <script>
   import Client from './../../http/client'
+  const moment = require('moment')
 
   export default {
     props: ['item'],
@@ -79,7 +83,8 @@
         showDeleteModal: false,
         removableItem: '',
         objectives: [],
-        endpoint: `/projects/${this.$route.params.pid}/objectives`
+        endpoint: `/projects/${this.$route.params.pid}/objectives`,
+        moment: moment
       }
     },
 
@@ -94,7 +99,8 @@
             url: this.endpoint,
             method: 'post',
             data: {
-              name: document.getElementById('name').value
+              name: document.getElementById('name').value,
+              due_on: document.getElementById('due_on').value
             }
           })
           .then(res => {

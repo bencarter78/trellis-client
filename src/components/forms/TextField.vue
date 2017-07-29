@@ -1,5 +1,5 @@
 <template>
-  <div class="has-margin-bottom">
+  <div class="has-margin-bottom-md">
     <div class="field" v-bind:class="{'has-error': error}">
       <label class="label" v-bind:for="name" v-if="label">
         {{ label }}
