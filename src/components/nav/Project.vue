@@ -33,7 +33,7 @@
           // {name: 'status', icon: 'fa-flag'},
           {name: 'risks', icon: 'fa-warning'},
           {name: 'issues', icon: 'fa-fire'},
-          {name: 'team', icon: 'fa-cog'},
+          {name: 'Members', icon: 'fa-users'},
           {name: 'settings', icon: 'fa-cog'}
         ]
       }

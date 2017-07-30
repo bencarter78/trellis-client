@@ -41,6 +41,15 @@
     </tbody>
   </table>
 
+  <div v-else>
+    <p>
+      Looks like you haven't created any streams for your project.
+      <a class="is-success" @click="showAddModal = true">
+        Let's fix that.
+      </a>
+    </p>
+  </div>
+
   <trellis-modal v-if="showAddModal" @close="showAddModal = false">
     <h3 slot="header" class="title is-4">Add Stream</h3>
 

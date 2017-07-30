@@ -23,6 +23,12 @@
             </p>
             <p class="level-item">
               <span class="icon">
+                <i class="fa fa-users has-margin-right"></i>
+              </span>
+              {{ item.members.length }}
+            </p>
+            <p class="level-item">
+              <span class="icon">
                 <i class="fa fa-calendar has-margin-right"></i>
               </span>
               {{ getDueDate(item.due_on) }}

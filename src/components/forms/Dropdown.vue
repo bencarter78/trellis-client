@@ -1,5 +1,5 @@
 <template>
-  <div class="has-margin-bottom-3x">
+  <div class="has-margin-bottom-md">
     <div class="field" v-bind:class="{'has-error': error}">
       <label class="label" v-bind:for="name" v-if="label">
         {{ label }}
@@ -7,7 +7,7 @@
 
       <div class="control">
         <div class="select">
-          <select :id="name" :name="name">
+          <select :id="name" :name="name" @change="$emit('updated', $event)">
             <option v-for="option in options" :value="option.value" v-bind:selected="isSelected(option.value)">{{ option.label }}</option>
           </select>
         </div>
