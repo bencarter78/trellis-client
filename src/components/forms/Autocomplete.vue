@@ -1,14 +1,18 @@
 <template>
-  <div>
-    <input :name="fieldName" type="hidden" v-bind:value="values.id">
+  <div class="has-margin-bottom-md">
+    <label class="label" v-bind:for="name" v-if="label">
+      {{ label }}
+    </label>
+
+    <input :id="name" :name="name" type="hidden" v-bind:value="values.id">
 
     <input
-      :name="'search[' + fieldName + ']'"
-      type="text"
-      class="form-control"
+      id="search"
+      :name="search"
+      class="input"
       placeholder="Search..."
       autocomplete="off"
-      v-model="query"
+      v-model="term"
       @keydown.down="down"
       @keydown.up="up"
       @keydown.enter.prevent
@@ -34,27 +38,33 @@
 
 <script>
   import VueTypeahead from 'vue-typeahead'
+
   export default {
     extends: VueTypeahead,
+
     props: [
+      'label',
       'endpoint', // The url to query
-      'fieldName', // Than name of the input
+      'name', // Than name of the input
       'values', // The original values of the search input and the hidden input
       'format' // A function to format the results
     ],
+
     data () {
       return {
-        query: '',
+        term: '',
         src: this.endpoint,
         limit: 5,
         minChars: 3,
         queryParamName: 'q'
       }
     },
+
     mounted () {
       this.checkRequiredProps()
       this.query = this.values.search
     },
+
     methods: {
       checkRequiredProps () {
         for (let prop in this.$props) {

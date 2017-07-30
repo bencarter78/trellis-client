@@ -4,8 +4,8 @@
       <h1 class="title is-3">Sign In</h1>
 
       <form @submit.prevent="login">
-        <trellis-text-field name="email" ref="email" label="Email" classes="has-margin-bottom-md"></trellis-text-field>
-        <trellis-text-field name="password" type="password" ref="password" label="Password" classes="has-margin-bottom-md"></trellis-text-field>
+        <trellis-text-field name="email" ref="email" label="Email" ></trellis-text-field>
+        <trellis-text-field name="password" type="password" ref="password" label="Password"></trellis-text-field>
 
         <div class="field is-grouped">
           <p class="control">

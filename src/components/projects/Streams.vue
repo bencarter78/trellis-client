@@ -22,26 +22,17 @@
     <thead>
       <tr>
         <th>Name</th>
+        <th>Owner</th>
         <th class="has-text-centered">Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="stream in streams">
-        <td>
-          <router-link :to="{
-            name: 'teams.projects.streams.show',
-            params: {
-              tid: $route.params.tid,
-              pid: $route.params.pid,
-              sid: stream.uid
-            }
-          }">
-            {{ stream.name }}
-          </router-link>
-        </td>
+        <td>{{ stream.name }}</td>
+        <td>{{ getOwner(stream) }}</td>
         <td class="has-text-centered">
           <a @click="openDeleteModal(stream)">
-            <span class="icon">
+            <span class="icon is-small">
               <i class="fa fa-trash-o"></i>
             </span>
           </a>
@@ -54,7 +45,20 @@
     <h3 slot="header" class="title is-4">Add Stream</h3>
 
     <div slot="body">
-      <trellis-text-field label="Name" name="name"></trellis-text-field>
+      <trellis-autocomplete
+        :endpoint="'/teams/' + $route.params.id + '/streams/search'"
+        :format="formatAutocomplete"
+        values=""
+        label="Name"
+        name="name">
+      </trellis-autocomplete>
+
+      <trellis-dropdown
+        :options="getMembers()"
+        values=""
+        label="Owner"
+        name="owner_id">
+      </trellis-dropdown>
     </div>
 
     <div slot="footer">
@@ -105,7 +109,8 @@ export default {
           url: this.endpoint,
           method: 'post',
           data: {
-            name: document.getElementById('name').value
+            name: document.getElementById('search').value,
+            owner_id: document.getElementById('owner_id').value
           }
         })
         .then(res => {
@@ -125,7 +130,7 @@ export default {
     remove () {
       new Client()
         .request({
-          url: `${this.endpoint}/${this.removableItem.id}`,
+          url: `${this.endpoint}/${this.removableItem.uid}`,
           method: 'delete'
         })
         .then(res => {
@@ -135,6 +140,28 @@ export default {
         .catch(err => {
           console.log(err)
         })
+    },
+
+    formatAutocomplete (items) {
+      let data = []
+      items.forEach(item => {
+        data.push(item)
+      })
+      return data
+    },
+
+    getMembers () {
+      let data = []
+
+      this.item.members.forEach(member => {
+        data.push({label: member.name, value: member.username})
+      })
+
+      return data
+    },
+
+    getOwner (stream) {
+      return stream.owners[stream.owners.length - 1].name
     }
   }
 }

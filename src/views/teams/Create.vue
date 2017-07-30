@@ -3,25 +3,20 @@
     <div class="column is-half is-offset-one-quarter">
       <h1 class="title is-3">Create A Team</h1>
 
-      <form @submit.prevent="submit">
-        <trellis-text-field
-          name="name"
-          ref="name"
-          label="Team Name"
-          classes="has-margin-bottom-md">
-        </trellis-text-field>
+    <form @submit.prevent="submit">
+      <text-field label="Project Name" name="name"></text-field>
 
-        <div class="field is-grouped">
-          <p class="control">
-            <button
-              class="button is-primary"
-              v-bind:class="isLoading ? 'is-loading' : ''">
-              Go
-            </button>
-          </p>
-        </div>
-      </form>
-    </div>
+      <text-field label="Description" name="description"></text-field>
+
+      <div class="field is-grouped">
+        <p class="control">
+          <button class="button is-primary">Submit</button>
+        </p>
+        <p class="control">
+          <button class="button is-link">Cancel</button>
+        </p>
+      </div>
+    </form>
   </div>
 </template>
 

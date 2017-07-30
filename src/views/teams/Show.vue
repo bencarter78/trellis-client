@@ -6,27 +6,9 @@
 
     <div class="column is-9">
       <div v-if="item">
-        <trellis-header>
-          <span slot="title">
-            <strong>{{ item.name }}</strong> Projects
-          </span>
-
-          <span slot="nav-right">
-            <div class="level-right">
-              <p class="level-item">
-                <router-link class="button is-primary" :to="{
-                  name: 'teams.projects.create',
-                  params: {tid: this.$route.params.tid}
-                }">
-                  Add
-                </router-link>
-              </p>
-            </div>
-          </span>
-        </trellis-header>
-
-        <div v-if="item.projects">
-          <trellis-card-projects :items="item.projects" :tid="item.uid"></trellis-card-projects>
+        <h1 class="title is-3">{{ item.name }} Projects</h1>
+        <div v-if="item.projects.length > 0">
+          <trellis-card-projects :items="item.projects"></trellis-card-projects>
         </div>
 
         <div v-else>
