@@ -133,10 +133,7 @@ export default {
       moment: moment,
       selectedType: 'project',
       typeOptions: [
-        {label: 'Project', value: 'project'},
-        {label: 'Milestone', value: 'milestone'},
-        {label: 'Stream', value: 'stream'},
-        {label: 'Objective', value: 'objective'}
+        {label: 'Project', value: 'project'}
       ]
     }
   },
@@ -144,6 +141,7 @@ export default {
   created () {
     this.tasks = this.item.tasks
     this.addResourceTasks()
+    this.addTypeOptions()
   },
 
   methods: {
@@ -156,8 +154,22 @@ export default {
     },
 
     addTasks (tasks) {
-      if (tasks.length > 0) {
+      if (tasks) {
         tasks.forEach(t => this.tasks.push(t))
+      }
+    },
+
+    addTypeOptions () {
+      if (this.item.milestones.length > 0) {
+        this.typeOptions.push({label: 'Milestone', value: 'milestone'})
+      }
+
+      if (this.item.streams.length > 0) {
+        this.typeOptions.push({label: 'Stream', value: 'stream'})
+      }
+
+      if (this.item.objectives.length > 0) {
+        this.typeOptions.push({label: 'Objective', value: 'objective'})
       }
     },
 
