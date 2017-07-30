@@ -5,27 +5,27 @@ export default [
     component: require('../views/projects/Index.vue')
   },
   {
-    path: '/teams/:tid/projects/:pid/streams/:sid',
+    path: '/teams/:tuid/projects/:puid/streams/:suid',
     name: 'teams.projects.streams.show',
     component: require('../views/streams/Show.vue')
   },
   {
-    path: '/teams/:tid/projects',
+    path: '/teams/:tuid/projects',
     name: 'teams.projects.index',
     component: require('../views/projects/Index.vue')
   },
   {
-    path: '/teams/:tid/projects/create',
+    path: '/teams/:tuid/projects/create',
     name: 'teams.projects.create',
     component: require('../views/projects/Create.vue')
   },
   {
-    path: '/teams/:tid/projects/:pid',
+    path: '/teams/:tuid/projects/:puid',
     name: 'teams.projects.show',
     component: require('../views/projects/Show.vue')
   },
   {
-    path: '/teams/:tid/projects/:pid/edit',
+    path: '/teams/:tuid/projects/:puid/edit',
     name: 'teams.projects.edit',
     component: require('../views/projects/Edit.vue')
   }

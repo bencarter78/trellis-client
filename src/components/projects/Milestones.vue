@@ -95,7 +95,7 @@ export default {
       showDeleteModal: false,
       removableItem: '',
       milestones: [],
-      endpoint: `/projects/${this.$route.params.pid}/milestones`,
+      endpoint: `/projects/${this.$route.params.puid}/milestones`,
       moment: moment
     }
   },

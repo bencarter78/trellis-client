@@ -46,7 +46,7 @@
 
     <div slot="body">
       <trellis-autocomplete
-        :endpoint="'/teams/' + $route.params.id + '/streams/search'"
+        :endpoint="'/teams/' + $route.params.tuid + '/streams/search'"
         :format="formatAutocomplete"
         values=""
         label="Name"
@@ -94,7 +94,7 @@ export default {
       showDeleteModal: false,
       removableItem: '',
       streams: [],
-      endpoint: `/projects/${this.$route.params.pid}/streams`
+      endpoint: `/projects/${this.$route.params.puid}/streams`
     }
   },
 

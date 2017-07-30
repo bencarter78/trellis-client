@@ -46,6 +46,15 @@
       </tbody>
     </table>
 
+    <div v-else>
+      <p>
+        Looks like you haven't created any objectives for your project.
+        <a class="is-success" @click="showAddModal = true">
+          Let's fix that.
+        </a>
+      </p>
+    </div>
+
     <trellis-modal v-if="showAddModal" @close="showAddModal = false">
       <h3 slot="header" class="title is-4">Add Objective</h3>
 
@@ -88,7 +97,7 @@
         showDeleteModal: false,
         removableItem: '',
         objectives: [],
-        endpoint: `/projects/${this.$route.params.pid}/objectives`,
+        endpoint: `/projects/${this.$route.params.puid}/objectives`,
         moment: moment
       }
     },

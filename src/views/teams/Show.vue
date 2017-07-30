@@ -19,7 +19,7 @@
             <router-link
               :to="{
                 name: 'teams.projects.create',
-                params: {tid: $route.params.tid}
+                params: {tid: $route.params.tuid}
               }"
               class="button is-primary has-margin-top">
               Create Project
@@ -50,7 +50,7 @@
         new Client()
           .request({
             method: 'get',
-            url: '/teams/' + this.$route.params.tid
+            url: '/teams/' + this.$route.params.tuid
           })
           .then(res => {
             this.item = res.data.data.team

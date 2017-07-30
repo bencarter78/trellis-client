@@ -25,7 +25,7 @@
               <router-link
                 :to="{
                   name: 'teams.show',
-                  params: {tid: item.uid}
+                  params: {tuid: item.uid}
                 }"
                 class="button is-primary">
                 View

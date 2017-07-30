@@ -63,7 +63,7 @@
         new Client()
           .request({
             method: 'get',
-            url: `/teams/${this.$route.params.id}/projects/${this.$route.params.pid}`
+            url: `/teams/${this.$route.params.tuid}/projects/${this.$route.params.puid}`
           })
           .then(res => {
             this.item = res.data.data.project

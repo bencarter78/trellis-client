@@ -14,8 +14,8 @@
               :to="{
                 name: 'teams.projects.show',
                 params: {
-                  tid: tid ? tid : item.team.uid,
-                  pid: item.uid
+                  tuid: tuid ? tuid : item.team.uid,
+                  puid: item.uid
                 }
               }"
               class="button is-primary">
@@ -30,6 +30,6 @@
 
 <script>
   export default {
-    props: ['items', 'tid']
+    props: ['items', 'tuid']
   }
 </script>

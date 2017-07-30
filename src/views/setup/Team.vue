@@ -53,7 +53,7 @@
             }
           })
           .then(res => {
-            this.$router.push({name: 'teams.show', params: {id: res.data.data.team.uid}})
+            this.$router.push({name: 'teams.show', params: {tuid: res.data.data.team.uid}})
           })
           .catch(err => {
             console.log(err)
