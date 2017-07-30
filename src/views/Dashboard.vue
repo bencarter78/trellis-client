@@ -10,7 +10,7 @@
           <div slot="footer">
             <div class="card-footer-item is-pulled-right">
               <router-link
-                :to="{ name: 'teams.show', params: {id: team.uid} }"
+                :to="{ name: 'teams.show', params: {tuid: team.uid} }"
                 class="button is-primary">
                 View
               </router-link>

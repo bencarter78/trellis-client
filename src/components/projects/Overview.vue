@@ -5,7 +5,7 @@
     </div>
 
     <div class="columns is-multiline">
-      <div class="column is-6">
+      <div class="column is-6" v-if="item.objectives.length > 0">
         <trellis-card>
           <div slot="title">Objectives</div>
 
@@ -31,7 +31,7 @@
         </trellis-card>
       </div>
 
-      <div class="column is-6">
+      <div class="column is-6" v-if="item.milestones.length > 0">
         <trellis-card>
           <div slot="title">Milestones</div>
 
@@ -48,7 +48,7 @@
         </trellis-card>
       </div>
 
-      <div class="column is-6">
+      <div class="column is-6" v-if="item.streams.length > 0">
         <trellis-card>
           <div slot="title">Streams</div>
 
@@ -65,7 +65,7 @@
         </trellis-card>
       </div>
 
-      <div class="column is-6">
+      <div class="column is-6" v-if="item.tasks.length > 0">
         <trellis-card>
           <div slot="title">Upcoming Due Tasks</div>
 

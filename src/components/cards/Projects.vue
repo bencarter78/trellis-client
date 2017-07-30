@@ -14,7 +14,7 @@
               :to="{
                 name: 'teams.projects.show',
                 params: {
-                  tuid: tuid ? tuid : item.team.uid,
+                  tuid: tuid ? tuid : item.uid,
                   puid: item.uid
                 }
               }"

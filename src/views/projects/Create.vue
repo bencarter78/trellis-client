@@ -45,7 +45,7 @@
           new Client()
             .request({
               method: 'post',
-              url: `/teams/${this.$route.params.tid}/projects`,
+              url: `/teams/${this.$route.params.tuid}/projects`,
               data: {
                 name: name,
                 description: description,
