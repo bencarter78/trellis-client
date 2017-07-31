@@ -4,32 +4,28 @@
       {{ label }}
     </label>
 
-    <input :id="name" :name="name" type="hidden" v-bind:value="values.id">
-
     <input
-      id="search"
-      :name="search"
       class="input"
       placeholder="Search..."
       autocomplete="off"
-      v-model="term"
+      v-model="query"
       @keydown.down="down"
       @keydown.up="up"
       @keydown.enter.prevent
       @keydown.enter="hit"
       @keydown.esc="reset"
-      @blur="isValid"
-      @input="search"/>
+      @blur="reset"
+      @input="update"/>
 
-    <div id="autocomplete-results" v-if="hasItems">
-      <ul class="list-group results">
+    <div class="autocomplete-results" v-if="hasItems">
+      <ul class="results">
         <li
-          class="list-group-item results-item"
+          class="results-item"
           v-for="(item, index) in items"
           :class="activeClass(index)"
           @mousedown="hit"
           @mousemove="setActive(index)">
-          {{ item.resultsDisplay }}
+          {{ item.name }}
         </li>
       </ul>
     </div>
@@ -42,62 +38,27 @@
   export default {
     extends: VueTypeahead,
 
-    props: [
-      'label',
-      'endpoint', // The url to query
-      'name', // Than name of the input
-      'values', // The original values of the search input and the hidden input
-      'format' // A function to format the results
-    ],
+    props: ['label', 'endpoint', 'name', 'resource'],
 
     data () {
       return {
-        term: '',
+        query: '',
         src: this.endpoint,
         limit: 5,
-        minChars: 3,
+        minChars: 2,
         queryParamName: 'q'
       }
     },
 
-    mounted () {
-      this.checkRequiredProps()
-      this.query = this.values.search
-    },
-
     methods: {
-      checkRequiredProps () {
-        for (let prop in this.$props) {
-          if (this[prop] == null) {
-            throw new Error(prop + ' is null. Please define a value for this prop.')
-          }
-        }
-      },
-
-      prepareResponseData (items) {
-        return this.format(items)
-      },
-
-      search () {
-        if (!this.searchMatchesQuery()) {
-          this.update()
-        }
-      },
-
-      searchMatchesQuery () {
-        return this.values.search === this.query
+      prepareResponseData (data) {
+        return data.data[this.resource]
       },
 
       onHit (item) {
-        this.query = this.values.search = item.display
-        this.values.id = item.id
+        console.log(item.name)
+        this.query = item.name
         this.items = []
-      },
-
-      isValid () {
-        if (!this.searchMatchesQuery()) {
-          this.values.id = ''
-        }
       }
     }
   }

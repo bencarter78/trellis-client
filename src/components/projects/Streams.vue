@@ -56,9 +56,8 @@
     <div slot="body">
       <trellis-autocomplete
         :endpoint="'/teams/' + $route.params.tuid + '/streams/search'"
-        :format="formatAutocomplete"
-        values=""
         label="Name"
+        resource="streams"
         name="name">
       </trellis-autocomplete>
 
