@@ -16,4 +16,8 @@ export default class {
   request (options) {
     return this.client.request(options)
   }
+
+  get (options) {
+    return this.client.get(options)
+  }
 }
