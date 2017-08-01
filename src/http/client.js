@@ -17,7 +17,11 @@ export default class {
     return this.client.request(options)
   }
 
-  get (options) {
-    return this.client.get(options)
+  get (url, options) {
+    return this.request({
+      method: 'get',
+      url: url,
+      params: options.params
+    })
   }
 }
