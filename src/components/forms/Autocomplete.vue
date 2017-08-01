@@ -4,31 +4,31 @@
       {{ label }}
     </label>
 
-    <input
-      class="input"
-      placeholder="Search..."
-      autocomplete="off"
-      v-model="query"
-      @keydown.down="down"
-      @keydown.up="up"
-      @keydown.enter.prevent
-      @keydown.enter="hit"
-      @keydown.esc="reset"
-      @blur="reset"
-      @input="update"/>
+      <div class="autocomplete-input">
+        <input
+          :id="name"
+          :name="name"
+          class="input"
+          placeholder="Search..."
+          autocomplete="off"
+          v-model="query"
+          @keydown.down="down"
+          @keydown.up="up"
+          @keydown.enter.prevent
+          @keydown.enter="hit"
+          @input="update"/>
 
-    <div class="autocomplete-results" v-if="hasItems">
-      <ul class="results">
-        <li
-          class="results-item"
-          v-for="(item, index) in items"
-          :class="activeClass(index)"
-          @mousedown="hit"
-          @mousemove="setActive(index)">
-          {{ item.name }}
-        </li>
-      </ul>
-    </div>
+        <ul class="options-list" v-if="hasItems">
+          <li
+            v-for="(item, index) in items"
+            class="results-item"
+            :class="activeClass(index)"
+            @mousedown="hit"
+            @mousemove="setActive(index)">
+            {{ item.name }}
+          </li>
+        </ul>
+      </div>
   </div>
 </template>
 
@@ -56,7 +56,6 @@
       },
 
       onHit (item) {
-        console.log(item.name)
         this.query = item.name
         this.items = []
       }
@@ -69,4 +68,35 @@
         position: absolute;
         z-index: 999;
     }
+
+  .autocomplete-input {
+    position: relative;
+  }
+
+  ul.options-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: -1px;
+    border: 1px solid #dbdbdb;
+    border-radius: 0 0 3px 3px;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  ul.options-list li {
+    width: 100%;
+    flex-wrap: wrap;
+    background: white;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    color: #363636;
+    padding: 7px;
+    cursor: pointer;
+  }
+
+  ul.options-list li.active {
+    background: #f8f8f8
+  }
 </style>

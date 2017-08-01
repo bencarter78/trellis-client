@@ -117,7 +117,7 @@ export default {
           url: this.endpoint,
           method: 'post',
           data: {
-            name: document.getElementById('search').value,
+            name: document.getElementById('name').value,
             owner_id: document.getElementById('owner_id').value
           }
         })
